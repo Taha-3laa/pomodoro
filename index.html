@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>pomodoro</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <span class="title"
+          >pom<i class="fa-regular fa-clock"></i><span>doro</span></span
+        >
+        <span class="settings"><i class="fa-solid fa-gear"></i></span>
+        <div class="settings">
+          <ul class="settings-options">
+            <li class="active">durations</li>
+            <li>seasions</li>
+            <li>volume</li>
+            <li>backgrounds</li>
+            <li>theme</li>
+          </ul>
+          <div class="options">
+            <div class="durations active">
+              <div>
+                <label for="pomodoro">pomodoro</label>
+                <input
+                  type="number"
+                  id="pomodoro"
+                  min="0"
+                  step="15"
+                  max="120"
+                  value="25"
+                />
+              </div>
+              <div>
+                <label for="short-break">short break</label>
+                <input
+                  type="number"
+                  id="shortbreak"
+                  min="5"
+                  step="5"
+                  max="15"
+                  value="5"
+                />
+              </div>
+              <div>
+                <label for="long-break">long break</label>
+                <input
+                  type="number"
+                  id="longbreak"
+                  min="15"
+                  step="5"
+                  max="30"
+                  value="15"
+                />
+              </div>
+            </div>
+            <div class="seasions">
+              <div>
+                <label for="seasions">seasions</label>
+                <input type="number" id="seasions" min="1" max="8" value="4" />
+              </div>
+            </div>
+            <div class="volume">
+              <div>
+                <label for="vol">volume</label>
+                <input type="checkbox" id="vol" checked />
+              </div>
+            </div>
+            <div class="backgrounds">
+              <ul class="solid">
+                <span>solid</span>
+                <li data-bg="rgb(119, 119, 119)"></li>
+                <li data-bg="rgb(220, 226, 217)"></li>
+                <li data-bg="rgb(28, 59, 45)"></li>
+                <li data-bg="white">
+                  <i class="fa-solid fa-plus"></i>
+                  <input type="color" />
+                </li>
+              </ul>
+              <ul class="gradients">
+                <span>gradients</span>
+                <li
+                  class="active"
+                  data-bg="linear-gradient(to top, rgb(67, 67, 67) 0%, rgb(0, 0, 0) 100%)"
+                ></li>
+                <li
+                  data-bg="linear-gradient(to top,rgb(9, 32, 63) 0%,rgb(83, 120, 149) 100%)"
+                ></li>
+                <li
+                  data-bg="linear-gradient(60deg,rgb(41, 50, 60) 0%,rgb(72, 85, 99) 100%)"
+                ></li>
+                <li
+                  data-bg=" linear-gradient(to top,rgb(2, 80, 197) 0%,rgb(212, 63, 141) 100%)"
+                ></li>
+              </ul>
+              <ul class="images">
+                <span>images</span>
+                <li data-bg="url('../backgroundimgs/one.jpg')">
+                  <img async src="backgroundimgs/one.jpg" alt="img1" />
+                </li>
+                <li data-bg="url('../backgroundimgs/two.jpg')">
+                  <img async src="backgroundimgs/two.jpg" alt="" />
+                </li>
+                <li data-bg="url('../backgroundimgs/three.jpg')">
+                  <img async src="backgroundimgs/three.jpg" alt="" />
+                </li>
+                <li data-bg="url('../backgroundimgs/four.jpg')">
+                  <img async src="backgroundimgs/four.jpg" alt="" />
+                </li>
+              </ul>
+            </div>
+            <div class="theme">
+              <span class="theme" data-color="black">dark</span>
+              <span class="theme active" data-color="white">light</span>
+            </div>
+          </div>
+          <div class="settings-buttons">
+            <button>Save</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="timer">
+        <span class="mins" data-time="25">25</span>
+        <span>:</span>
+        <span class="secs" data-time="0">00</span>
+        <svg width="300" height="300">
+          <circle cx="150" cy="150" r="140"
+            stroke-width="20" stroke-linecap="round" stroke-dasharray="879.6459" stroke-dashoffset="879.6459"></circle>
+        </svg>
+        <ul class="seasions">
+          <li><i class="fa-solid fa-fire"></i></li>
+          <li><i class="fa-solid fa-fire"></i></li>
+          <li><i class="fa-solid fa-fire"></i></li>
+          <li><i class="fa-solid fa-fire"></i></li>
+        </ul>
+      </div>
+      <div class="controls">
+        <button class="reset"><i class="fa-solid fa-rotate-right"></i></button>
+        <button class="start" data-status="play">
+          <i class="fa-solid fa-play"></i>
+        </button>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
