@@ -32,6 +32,10 @@ if (!settingsObj) {
 seasions = settingsObj.seasions;
 let durations = settingsObj.durations;
 
+window.addEventListener("beforeunload", () => {
+  localStorage.setItem("Settings", JSON.stringify(settingsObj); }
+
+
 // sounds
 let sounds = [new Audio("sounds/break.mp3"), new Audio("sounds/pomo.mp3")];
 
@@ -239,7 +243,6 @@ let btnSave = document.querySelector(".settings-buttons button");
 btnSave.addEventListener("click", () => {
   btnSettings.click();
   applyNewSettings();
-  localStorage.setItem("Settings", JSON.stringify(settingsObj));
 });
 
 btnSettings.addEventListener("click", () => {
