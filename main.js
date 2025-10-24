@@ -34,8 +34,7 @@ let durations = settingsObj.durations;
 
 window.addEventListener("beforeunload", () => {
   localStorage.setItem("Settings", JSON.stringify(settingsObj));
-}
-
+});
 
 // sounds
 let sounds = [new Audio("sounds/break.mp3"), new Audio("sounds/pomo.mp3")];
