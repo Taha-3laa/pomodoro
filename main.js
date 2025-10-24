@@ -33,7 +33,8 @@ seasions = settingsObj.seasions;
 let durations = settingsObj.durations;
 
 window.addEventListener("beforeunload", () => {
-  localStorage.setItem("Settings", JSON.stringify(settingsObj); }
+  localStorage.setItem("Settings", JSON.stringify(settingsObj));
+}
 
 
 // sounds
