@@ -38,7 +38,8 @@ let sounds = [new Audio("sounds/break.mp3"), new Audio("sounds/pomo.mp3")];
 function playSound(type) {
   if (settingsObj.volume) {
     sounds.forEach((s) => {
-      if (s.src.includes(type)) s.play();
+      if (s.src.endsWith(`${type}.mp3`)) 
+        s.play();
     });
   }
 }
