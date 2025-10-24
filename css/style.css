@@ -10,10 +10,12 @@
   --background: linear-gradient(to top, rgb(67, 67, 67) 0%, rgb(0, 0, 0) 100%);
   --themeColor: white;
   --primaryColor: tomato;
+  --border : 12px;
+  --shadow : 0 4px 6px rgba(0, 0, 0, 0.1),0 8px 24px rgba(0, 0, 0, 0.1);
 }
-
 body {
-  background: var(--background);
+  background : var(--background);  /* background: var(--background); */
+  transition: background-image 0.5s ease;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -21,7 +23,6 @@ body {
   color: var(--themeColor);
   font-weight: bold;
 }
-
 .container {
   height: 100vh;
   padding: 20px;
@@ -44,11 +45,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: var(--background);
+  background-size: cover;
+  background-position: center;
   padding: 15px;
-  border-radius: 20px;
-  background-image: var(--background);
-  box-shadow: 0px -5px 20px 5px #2f2e2e;
+  border-radius: var(--border);
   position: relative;
+  box-shadow: var(--shadow);
 }
 .header .title,
 .settings-options li {
@@ -67,24 +70,25 @@ div.settings {
   top: 100%;
   left: 0;
   opacity: 0;
+  transition: opacity 0.5s ease;
   visibility: hidden;
-  transition: opacity 0.5s;
 }
 
 div.settings.active {
+  opacity: .96;
+  transform: scale(1);
   visibility: visible;
   margin-top: 15px;
   display: flex;
   flex-flow: column wrap;
-  border-radius: 12px;
+  border-radius: var(--border);
   padding: 20px;
   z-index: 1;
   width: 100%;
   height: 530px;
-  background-image: var(--background);
-  box-shadow: 0px 0px 5px 1px;
-  opacity: 0.99;
-  transition: opacity 0.5s;
+  background : var(--background);
+  background-size: cover;
+  box-shadow: var(--shadow);
 }
 
 ul.settings-options {
@@ -93,11 +97,12 @@ ul.settings-options {
   justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
+  padding-bottom: 5px;
 }
 
 .settings-options li {
   padding: 10px;
-  border-radius: 12px;
+  border-radius: var(--border);
   transform: scale(0.8);
   opacity: 0.7;
   background-image: var(--background);
@@ -117,7 +122,7 @@ ul.settings-options {
 }
 .options > div {
   display: none;
-  border-radius: 12px;
+  border-radius: var(--border);
 }
 
 .options div.active {
@@ -129,7 +134,7 @@ ul.settings-options {
   flex-direction: column;
   justify-content: space-around;
   background-image: var(--background);
-  box-shadow: 0px 0px 5px 1px;
+  box-shadow: var(--shadow);
 }
 .options div.active > div {
   border-radius: inherit;
@@ -157,15 +162,15 @@ ul.settings-options {
 .settings-buttons {
   width: 80%;
   margin: 0 auto;
+  padding: 0 16px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
 
 .settings-buttons button {
-  margin-right: 10px;
   border: none;
-  border-radius: 12px;
+  border-radius: var(--border);
   width: 80px;
   padding: 10px;
   color: var(--themeColor);
@@ -216,35 +221,19 @@ li img {
 }
 
 .gradients li:first-of-type {
-  background-image: linear-gradient(
-    to top,
-    rgb(67, 67, 67) 0%,
-    rgb(0, 0, 0) 100%
-  );
+  background-image: linear-gradient(to top,rgb(67, 67, 67) 0%,rgb(0, 0, 0) 100%);
 }
 
 .gradients li:nth-of-type(2) {
-  background-image: linear-gradient(
-    to top,
-    rgb(9, 32, 63) 0%,
-    rgb(83, 120, 149) 100%
-  );
+  background-image: linear-gradient(-225deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%);
 }
 
 .gradients li:nth-of-type(3) {
-  background-image: linear-gradient(
-    60deg,
-    rgb(41, 50, 60) 0%,
-    rgb(72, 85, 99) 100%
-  );
+  background-image: linear-gradient(60deg,rgb(41, 50, 60) 0%,rgb(72, 85, 99) 100%);
 }
 
 .gradients li:last-of-type {
-  background-image: linear-gradient(
-    to top,
-    rgb(2, 80, 197) 0%,
-    rgb(212, 63, 141) 100%
-  );
+  background-image: linear-gradient(-225deg, #A8BFFF 0%, #884D80 100%);
 }
 
 .solid li:last-child {
@@ -256,15 +245,13 @@ li img {
 }
 .solid li:last-child i {
   position: absolute;
-  color: #ddd;
+  color: var(--themeColor);
 }
 
 .solid li:last-child input {
   opacity: 0;
   width: 100%;
   height: 100%;
-  border-radius: 50%;
-  position: relative;
 }
 
 .theme span {
@@ -306,12 +293,16 @@ li img {
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  background-image: var(--background);
+  background : var(--background);
+  background-size: cover;
+  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 40px;
+  letter-spacing: 2px;
   position: relative;
+  box-shadow: var(--shadow);
 }
 
 ul.seasions {
@@ -336,11 +327,14 @@ svg circle {
 .controls {
   display: flex;
   width: 140px;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 20px;
   padding: 10px;
-  border-radius: 12px;
-  background-color: #2577ba00;
-  box-shadow: 6px 6px 10px 5px #000000;
+  border-radius: var(--border);
+  background: var(--background);
+  background-size: cover;
+  background-position: center;
+  box-shadow: var(--shadow);
 }
 
 .controls button {
@@ -351,7 +345,7 @@ svg circle {
   border-radius: 50%;
   border: none;
   color: var(--themeColor);
-  background: var(--background);
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -370,7 +364,7 @@ svg circle {
   .options div.active,
   .settings-buttons {
     width: 100%;
-    padding: 10px;
+    padding: 5px;
   }
   .options {
     padding: 5px;

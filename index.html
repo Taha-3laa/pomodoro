@@ -10,9 +10,7 @@
   <body>
     <div class="container">
       <div class="header">
-        <span class="title"
-          >pom<i class="fa-regular fa-clock"></i><span>doro</span></span
-        >
+        <span class="title">pom<i class="fa-regular fa-clock"></i><span>doro</span></span>
         <span class="settings"><i class="fa-solid fa-gear"></i></span>
         <div class="settings">
           <ul class="settings-options">
@@ -26,48 +24,27 @@
             <div class="durations active">
               <div>
                 <label for="pomodoro">pomodoro</label>
-                <input
-                  type="number"
-                  id="pomodoro"
-                  min="0"
-                  step="15"
-                  max="120"
-                  value="25"
-                />
+                <input type="number" id="pomodoro" min="20" step="5" max="120"/>
               </div>
               <div>
                 <label for="short-break">short break</label>
-                <input
-                  type="number"
-                  id="shortbreak"
-                  min="5"
-                  step="5"
-                  max="15"
-                  value="5"
-                />
+                <input type="number" id="shortbreak" min="5" step="5" max="15"/>
               </div>
               <div>
                 <label for="long-break">long break</label>
-                <input
-                  type="number"
-                  id="longbreak"
-                  min="15"
-                  step="5"
-                  max="30"
-                  value="15"
-                />
+                <input type="number" id="longbreak" min="15" step="5" max="30"/>
               </div>
             </div>
             <div class="seasions">
               <div>
                 <label for="seasions">seasions</label>
-                <input type="number" id="seasions" min="1" max="8" value="4" />
+                <input type="number" id="seasions" min="1" max="8"/>
               </div>
             </div>
             <div class="volume">
               <div>
                 <label for="vol">volume</label>
-                <input type="checkbox" id="vol" checked />
+                <input type="checkbox" id="vol"/>
               </div>
             </div>
             <div class="backgrounds">
@@ -78,38 +55,29 @@
                 <li data-bg="rgb(28, 59, 45)"></li>
                 <li data-bg="white">
                   <i class="fa-solid fa-plus"></i>
-                  <input type="color" />
+                  <input type="color"/>
                 </li>
               </ul>
               <ul class="gradients">
                 <span>gradients</span>
-                <li
-                  class="active"
-                  data-bg="linear-gradient(to top, rgb(67, 67, 67) 0%, rgb(0, 0, 0) 100%)"
-                ></li>
-                <li
-                  data-bg="linear-gradient(to top,rgb(9, 32, 63) 0%,rgb(83, 120, 149) 100%)"
-                ></li>
-                <li
-                  data-bg="linear-gradient(60deg,rgb(41, 50, 60) 0%,rgb(72, 85, 99) 100%)"
-                ></li>
-                <li
-                  data-bg=" linear-gradient(to top,rgb(2, 80, 197) 0%,rgb(212, 63, 141) 100%)"
-                ></li>
+                <li data-bg="linear-gradient(to top, rgb(67, 67, 67) 0%, rgb(0, 0, 0) 100%)"></li>
+                <li data-bg="linear-gradient(-225deg, rgb(71, 59, 123) 0%, rgb(53, 132, 167) 51%, rgb(48, 210, 190) 100%)"></li>
+                <li data-bg="linear-gradient(60deg,rgb(41, 50, 60) 0%,rgb(72, 85, 99) 100%)"></li>
+                <li data-bg="linear-gradient(-225deg,rgb(168, 191, 255) 0%, rgb(136, 77, 128) 100%)"></li>
               </ul>
               <ul class="images">
                 <span>images</span>
                 <li data-bg="url('../backgroundimgs/one.jpg')">
-                  <img async src="backgroundimgs/one.jpg" alt="img1" />
+                  <img async src="backgroundimgs/one.jpg" alt="img1"/>
                 </li>
                 <li data-bg="url('../backgroundimgs/two.jpg')">
-                  <img async src="backgroundimgs/two.jpg" alt="" />
+                  <img async src="backgroundimgs/two.jpg" alt="img2" />
                 </li>
                 <li data-bg="url('../backgroundimgs/three.jpg')">
-                  <img async src="backgroundimgs/three.jpg" alt="" />
+                  <img async src="backgroundimgs/three.jpg" alt="img3" />
                 </li>
                 <li data-bg="url('../backgroundimgs/four.jpg')">
-                  <img async src="backgroundimgs/four.jpg" alt="" />
+                  <img async src="backgroundimgs/four.jpg" alt="img4" />
                 </li>
               </ul>
             </div>
@@ -123,9 +91,8 @@
           </div>
         </div>
       </div>
-
       <div class="timer">
-        <span class="mins" data-time="25">25</span>
+        <span class="mins" data-time="0" data-status="f">00</span>
         <span>:</span>
         <span class="secs" data-time="0">00</span>
         <svg width="300" height="300">
@@ -133,10 +100,6 @@
             stroke-width="20" stroke-linecap="round" stroke-dasharray="879.6459" stroke-dashoffset="879.6459"></circle>
         </svg>
         <ul class="seasions">
-          <li><i class="fa-solid fa-fire"></i></li>
-          <li><i class="fa-solid fa-fire"></i></li>
-          <li><i class="fa-solid fa-fire"></i></li>
-          <li><i class="fa-solid fa-fire"></i></li>
         </ul>
       </div>
       <div class="controls">
