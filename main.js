@@ -33,7 +33,7 @@ seasions = settingsObj.seasions;
 let durations = settingsObj.durations;
 
 // sounds
-let sounds = [new Audio("/sounds/break.mp3"), new Audio("/sounds/pomo.mp3")];
+let sounds = [new Audio("sounds/break.mp3"), new Audio("sounds/pomo.mp3")];
 
 function playSound(type) {
   if (settingsObj.volume) {
