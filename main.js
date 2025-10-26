@@ -223,7 +223,8 @@ function updateSeasionsDurations() {
 }
 
 function updateSeasions() {
-  for (let i =0 ;i <seasionsinput.value; i++) {
+  let difference = Math.abs(seasionsinput.value - seasions.Nums);
+  for (let i =0 ;i <difference; i++) {
     if (seasionsinput.value > seasions.Nums) addNewSeasion();
     else if (seasionsinput.value < seasions.Nums) deleteSeasion();
   }
