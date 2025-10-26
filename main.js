@@ -243,7 +243,6 @@ let btnSave = document.querySelector(".settings-buttons button");
 btnSave.addEventListener("click", () => {
   btnSettings.click();
   applyNewSettings();
-  localStorage.setItem("Settings", JSON.stringify(settingsObj));
 });
 
 btnSettings.addEventListener("click", () => {
