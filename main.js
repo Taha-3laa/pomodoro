@@ -88,13 +88,30 @@ let isDurationsChanged = false;
 let durationsContorls = document.querySelectorAll(".durations input");
 durationsContorls.forEach((input) => {
   input.addEventListener("change", (event) => {
-    if (event.target.id == "pomodoro") durations.pomodoro = event.target.value;
-    else if (event.target.id == "shortbreak")
-      durations.shortBreak = event.target.value;
-    else durations.longBreak = event.target.value;
+    let value = Math.floor(event.target.value); // remove fractions
+
+    // enforce minimum values
+    if (event.target.id === "pomodoro" && value < 20) value = 20;
+    if (event.target.id === "shortbreak" && value < 5) value = 5;
+    if (event.target.id === "longbreak" && value < 15) value = 15;
+
+    // enforce maximums
+    if (event.target.id === "pomodoro" && value > 120) value = 120;
+    if (event.target.id === "shortbreak" && value > 15) value = 15;
+    if (event.target.id === "longbreak" && value > 30) value = 30;
+
+    // update UI and settings object
+    event.target.value = value;
+    if (event.target.id == "pomodoro") durations.pomodoro = value;
+    else if (event.target.id == "shortbreak") durations.shortBreak = value;
+    else durations.longBreak = value;
+
     isDurationsChanged = true;
   });
 });
+
+
+
 
 let isSeasionsChanged = false;
 let seasionsinput = options[1].children[0].children[1];
@@ -230,21 +247,36 @@ function updateSeasions() {
   }
 }
 
+let pendingSettings = false;
 function applyNewSettings() {
-  if (isDurationsChanged) updateSeasionsDurations();
-  if (isSeasionsChanged) updateSeasions();
+  if (btnStart.dataset.status === "pause") {
+    pendingSettings = true;
+    console.log("Settings will apply after the current session ends.");
+  } else {
+    if (isDurationsChanged) updateSeasionsDurations();
+    if (isSeasionsChanged) updateSeasions();
+    pendingSettings = false;
+  }
+
   document.documentElement.style.setProperty("--themeColor", settingsObj.theme);
-  document.documentElement.style.setProperty("--background",settingsObj.background);
+  document.documentElement.style.setProperty("--background", settingsObj.background);
+
   isSeasionsChanged = false;
   isDurationsChanged = false;
 }
+
 
 // buttons
 let btnSave = document.querySelector(".settings-buttons button");
 btnSave.addEventListener("click", () => {
   btnSettings.click();
   applyNewSettings();
+  if (btnStart.dataset.status === "pause") {
+    alert("Your new settings will apply after the current session ends.");
+  }
 });
+
+
 
 btnSettings.addEventListener("click", () => {
   settings.classList.toggle("active");
@@ -289,17 +321,20 @@ function getLastSeasion() {
   }
 }
 
+let isTimerRunning = false;
 let currentSeasion = getLastSeasion();
 function startSeasion() {
-  // if (currentSeasion.done) {
-  //   mins.dataset.status = 'b';
-  // }
-  
-  if (btnStart.dataset.status == "play") timer.run();
-  else timer.stop();
+  if (btnStart.dataset.status == "play") {
+    timer.run();
+    isTimerRunning = true;
+  } else {
+    timer.stop();
+    isTimerRunning = false;
+  }
   
   changeBtnState();
 }
+
 
 function updateCurrentSeasion() {
   // pomodoro
@@ -330,6 +365,12 @@ function markSeasion(index, done) {
 }
 
 function updateInterval() {
+    if (pendingSettings) {
+    console.log("Applying pending settings...");
+    if (isDurationsChanged) updateSeasionsDurations();
+    if (isSeasionsChanged) updateSeasions();
+    pendingSettings = false;
+  }
   if (mins.dataset.status == "f") {
     playSound("pomo");
     markSeasion(countSeasionsDone, true);
@@ -386,17 +427,19 @@ let timer = {
   stop() {
     clearTimeout(timerID);
   },
-  reset() {
-    this.secs = 0;
-    this.mins = parseInt(mins.dataset.time);
-    updateDurationUI();
-    this.stop();
-    this.isFinished = false;
-    countSecs = 0;
-    progressCircle.style.strokeDashoffset = circumference;
-    btnStart.dataset.status = "pause";
-    changeBtnState();
-  },
+ reset() {
+  this.secs = 0;
+  this.mins = parseInt(mins.dataset.time);
+  updateDurationUI();
+  this.stop();
+  this.isFinished = false;
+  countSecs = 0;
+  progressCircle.style.strokeDashoffset = circumference;
+  btnStart.dataset.status = "pause";
+  changeBtnState();
+  isTimerRunning = false;
+}
+,
 };
 
 btnReset.addEventListener("click", () => timer.reset());
