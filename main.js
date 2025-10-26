@@ -33,15 +33,20 @@ seasions = settingsObj.seasions;
 let durations = settingsObj.durations;
 
 // sounds
-let sounds = [new Audio("/sounds/break.mp3"), new Audio("/sounds/pomo.mp3")];
+let sounds = [new Audio("sounds/break.mp3"), new Audio("sounds/pomo.mp3")];
 
 function playSound(type) {
   if (settingsObj.volume) {
     sounds.forEach((s) => {
-      if (s.src.includes(type)) s.play();
+      if (s.src.endsWith(`${type}.mp3`))
+        s.play();
     });
   }
 }
+
+window.addEventListener("beforeunload", () => {
+  localStorage.setItem("Settings", JSON.stringify(settingsObj));
+});
 
 //update all Controls
 function updateControls() {
